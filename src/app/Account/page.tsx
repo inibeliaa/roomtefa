@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client"
 import React, { useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function Page() {
   const [username, setUsername] = useState<string>("");
@@ -23,15 +25,37 @@ function Page() {
         { withCredentials: true }
       );
 
-      alert("Berhasil Menambahkan akun");
+      Swal.fire({
+        text: "Success Add Account",
+        icon: "success",
+        timer: 2000,
+        iconColor: "#0E7793cc",
+        color: "#0E7793",
+        width: "25%",
+        showConfirmButton: false,
+        customClass: {
+          container: "alert"
+        }
+      });
       console.log(res);
       setUsername("");
       setPassword("");
       setPhone("");
       setEmail("");
-    } catch (error) {
+    } catch (error:any) {
       console.log(error);
-      alert("Gagal");
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: error.response.data.message,
+        width: "25%",
+        color: "#0E7793",
+        iconColor: "#e70008",
+        customClass: {
+          container:"alert"
+        },
+        showConfirmButton: false
+      });
     }
   }
 
@@ -85,7 +109,7 @@ function Page() {
             <div className="relative">
               <button
                 onClick={AddAcc}
-                className="absolute right-3 bg-white border-1 rounded-md text-[#0E7793] border-[#0E7793] w-[20%] h-[50px]"
+                className="absolute cursor-pointer right-3 bg-white border-1 rounded-md text-[#0E7793] border-[#0E7793] w-[20%] h-[50px]"
               >
                 Add Account
               </button>
