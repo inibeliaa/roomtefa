@@ -90,7 +90,7 @@ const Detail: React.FC<popDetail> = ({ id, isVisible, onClose }) => {
         return `${waktuFormatted} on ${tanggall}`;
     };
   return (
-    <div className='fixed inset-0 z-50 flex ps-[25%] items-center '>
+    <div className='fixed inset-0 z-50 flex ps-[25%] items-center mt-[30%]'>
               {data && (              
           <div className="w-[30%] pb-[5%] pt-[3%] px-[2%] bg-white rounded-md">
               <h1 className='font-bold text-[20px] text-center'>Detail Checkin Guest</h1>
@@ -101,7 +101,7 @@ const Detail: React.FC<popDetail> = ({ id, isVisible, onClose }) => {
                       <p className="text-sm font-light">No of Room :<span>{data.roomNo}</span></p>
                       <p className="text-sm font-light whitespace-nowrap">Wake Up Call :<span>{formatTanggalWaktu(data.checkinOuts[0].wakeUp)}</span></p>
                       <p className="text-sm font-light">Remarks:
-                          {data.remarks.length > 0 ?  (
+                          {data.remarks && data.remarks.length > 0 ?  (
                               data.remarks.map((items) => (
                                 <span key={items.id} className="block">
                                - {items.detail} : {formatHarga(items.price)}

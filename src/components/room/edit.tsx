@@ -9,27 +9,27 @@ type EditPop = {
     isVisible: boolean;
     onClose: (isClose: boolean) => void;
 }
-type Harga = {
-    harga: number;
+type Status = {
+    statusRoom: string;
 }
-const EditHarga: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
+const EditStatus: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
     if (!isVisible) return null;
-    const [harga, setHarga] = useState<number>()
-    const [data, setData] = useState<Harga>();
+    const [status, setStatus] = useState<string>('')
+    const [data, setData] = useState<Status>();
     useEffect(() => {
         getRoom();
     }, [])
     async function getRoom() {
         const url = `${process.env.NEXT_PUBLIC_URL}api/oneRoom/${id}`
         try {
-            const res = await axios.get<Harga>(
+            const res = await axios.get<Status>(
                 url,
                 {
                     withCredentials: true
                 }
             )
             setData(res.data)
-            // setHarga(res.data.harga)
+            setStatus(res.data.statusRoom)
           console.log(res.data)
          
         } catch (error) {
@@ -44,12 +44,12 @@ const EditHarga: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
             url,
             {
                 id: id,
-                harga: harga
+               statusRoom: status
             },
             { withCredentials: true }
           );
           Swal.fire({
-            text: "Success Update Room Price",
+            text: "Success Update Room Status",
             icon: "success",
             timer: 2000,
             iconColor: "#0E7793cc",
@@ -84,8 +84,13 @@ const EditHarga: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
               {data && (              
           <div className="w-[30%] h-[27%] px-[2%] bg-white rounded-md">
                 <div className="mt-[10%] mb-[3%]">
-                    <label htmlFor="harga">Harga </label>
-                    <input type="text" onChange={(e) => setHarga(Number(e.target.value))} defaultValue={data.harga} name='harga' className='w-[100%] py-1 px-2 bg-[#DEF1F1]/80 h-[40px]' />
+                    <label htmlFor="Status">Status Room</label>
+            <select name='Room Status' defaultValue={status} onChange={(e)=>setStatus(e.target.value)} className='bg-white p-2  w-full h-[50px] rounded-md' id='Room Status'>
+                    <option  value="VR">Vacant Ready</option>
+                    <option  value="VD">Vacant Dirty</option>
+                    <option  value="OC">Occupied Clean</option>
+                    <option  value="OD">Occupied Dirty</option>
+                    </select>
                 </div>
               <div className="flex relative mt-[8%] whitespace-nowrap"> 
                   <div className="absolute right-1">
@@ -103,4 +108,4 @@ const EditHarga: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
   )
 }
 
-export default EditHarga
+export default EditStatus

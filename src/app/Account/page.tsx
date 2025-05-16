@@ -66,7 +66,7 @@ function Page() {
           Add Account
         </div>
         <div className="flex ms-[10%] mt-[3%]">
-          <div className="bg-[#84D2D89C] space-y-[4%] px-[3%] shadow-[3px_2px_10px_2px_#0B6279] pt-[2%] flex-col justify-center rounded-md w-[60%] pb-[8%]">
+          <div className="bg-gradient-to-b from-[#0E7793] via-[#0E7793] to-[#84D2D89C]  space-y-[4%] px-[3%] shadow-[3px_2px_10px_2px_#0B6279] pt-[2%] flex-col justify-center rounded-md w-[60%] pb-[8%]">
             <h1 className="text-white text-[25px] text-center font-semibold">
               Resepsionis Account
             </h1>

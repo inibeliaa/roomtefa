@@ -23,8 +23,8 @@ import Swal from 'sweetalert2'
 import axios from 'axios'
 function Sidebar() {
   const pathname = usePathname();
-  const isCheckin = pathname.startsWith("/Checkin/Build/")
-  const isCheckout = pathname.startsWith("/Checkout/Build/")
+  const isRegris = pathname.startsWith("/Registration/Build/") ||  pathname.startsWith("/Registration/BuildGroup/")
+  const isGuestBill = pathname.startsWith("/GuestBill/Build/")
   const router = useRouter();
   const handleLogout = async () => {
     const token = localStorage.getItem("token");
@@ -78,77 +78,104 @@ function Sidebar() {
       }
     });
   }
+   const userDataHotel = JSON.parse(localStorage.getItem("userDataHotel") || "{}");
+   const userRole = userDataHotel.role;
   return (
       <div className='fixed top-0 left-0 z-50'>
           <nav className='bg-gradient-to-b from-[#64C9E3] via-[#0E7793] to-[#0B6279] w-80 h-screen flex flex-col'>
             <Image
             src={logo}
-            className="w-[90px] h-[90px] mt-[10%] mx-auto"
+            className="w-[90px] h-[90px] mt-[6%] mx-auto"
             width={150}
             height={150}
             alt="logo"
         />
-        <ul className='flex-col space-y-[10%] mx-auto mt-[13%]'>
-          <Link href="/Reservation" className={`flex ${pathname === "/Reservation" || pathname === "/Reservation/Add"? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
+        <ul className='flex-col space-y-[10%] mx-auto mt-[15%]'>
+          {userRole === "resepsionis" ? (
+
+            <>
+              <Link href="/Reservation" className={`flex ${pathname === "/Reservation" || pathname === "/Reservation/Add" || pathname === "/Reservation/AddGroup" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
               <Image
-                    src={pathname === "/Reservation" || pathname === "/Reservation/Add"? reservasiIcon2 : reservasiIcon1}
-                    className="w-8 h-8 me-5"
-                    width={30}
-                    height={30}
-                    alt="reservation icon"
-                  />
-            <li className={` text-[22px] font-[580px] ${pathname === "/Reservation" || pathname === "/Reservation/Add" ? 'text-[#0B6279]' : 'text-white'}`}>Reservation</li>
+                src={pathname === "/Reservation" || pathname === "/Reservation/Add" || pathname === "/Reservation/AddGroup" ? reservasiIcon2 : reservasiIcon1}
+                className="w-8 h-8 me-5"
+                width={30}
+                height={30}
+                alt="reservation icon" />
+              <li className={` text-[22px] font-[580px] ${pathname === "/Reservation" || pathname === "/Reservation/Add" || pathname === "/Reservation/AddGroup" ? 'text-[#0B6279]' : 'text-white'}`}>Reservation</li>
+            </Link><Link href="/Registration" className={`flex ${pathname === "/Registration" || isRegris ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
+                <Image
+                  src={pathname === "/Registration" || isRegris ? checkinIcon2 : checkinIcon1}
+                  className="w-8 h-8 me-5"
+                  width={30}
+                  height={30}
+                  alt="checkin icon" />
+                <li className={` text-[22px] font-[580px] ${pathname === "/Registration" || isRegris ? ' text-[#0B6279]' : 'text-white'}`}>Registration</li>
               </Link>
-          <Link href="/Checkin" className={`flex ${pathname === "/Checkin" || pathname === "/Checkin/Build" || isCheckin ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
-              <Image
-                    src={pathname === "/Checkin" || pathname === "/Checkin/Build" || isCheckin? checkinIcon2 : checkinIcon1}
-                    className="w-8 h-8 me-5"
-                    width={30}
-                    height={30}
-                    alt="checkin icon"
-                  />
-            <li className={` text-[22px] font-[580px] ${pathname === "/Checkin" || pathname === "/Checkin/Build" || isCheckin ? ' text-[#0B6279]' : 'text-white'}`}>Regristation</li>
-          </Link>
-          <Link href="/Checkout" className={`flex ${pathname === "/Checkout" || pathname === "/Checkout/Build" || isCheckout? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
-          <Image
-                    src={pathname === "/Checkout" || pathname === "/Checkout/Build" || isCheckout ? checkoutIcon2 : checkoutIcon1}
-                    className="w-8 h-8 me-5"
-                    width={30}
-                    height={30}
-                    alt="checkout icon"
-                  />
-            <li className={` text-[22px] font-[580px] ${pathname === "/Checkout" || pathname === "/Checkout/Build" || isCheckout ? ' text-[#0B6279]' : 'text-white'}`}>Checkout</li>
-          </Link>
-          <Link href="/Room" className={`flex ${pathname === "/Room" || pathname === "/Room/Edit" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
-              <Image
+              <Link href="/ExpectedArrivalList" className={`flex ${pathname === "/ExpectedArrivalList" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] text-white'}`}>
+                <Image
+                  src={pathname === "/ExpectedArrivalList" ? checkinIcon2 : checkinIcon1}
+                  className="w-8 h-8 me-5"
+                  width={30}
+                  height={30}
+                  alt="checkin icon" />
+                <li className={` text-[22px] font-[580px] ${pathname === "/ExpectedArrivalList" ? ' text-[#0B6279]' : 'text-white'}`}>Expected Arrival</li>
+              </Link>
+              <Link href="/ExpectedDepartureList" className={`flex items-center ${pathname === "/ExpectedDepartureList" ? 'bg-white w-[275px] pt-[7px] rounded-[10px] ps-[8%] h-[70px] text-[#0B6279]' : 'ps-[8%] text-white'}`}>
+                <Image
+                  src={pathname === "/ExpectedDepartureList" ? checkinIcon2 : checkinIcon1}
+                  className="w-8 h-8 me-5"
+                  width={30}
+                  height={30}
+                  alt="checkin icon" />
+                <li className={` text-[22px] font-[580px] ${pathname === "/ExpectedDepartureList" ? ' text-[#0B6279]' : 'text-white'}`}>Expected Departure</li>
+              </Link>
+              <Link href="/GuestBill" className={`flex ${pathname === "/GuestBill" || isGuestBill ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] text-white'}`}>
+                <Image
+                  src={pathname === "/GuestBill" || isGuestBill ? checkoutIcon2 : checkoutIcon1}
+                  className="w-8 h-8 me-5"
+                  width={30}
+                  height={30}
+                  alt="checkout icon" />
+                <li className={` text-[22px] font-[580px] ${pathname === "/GuestBill" || isGuestBill ? ' text-[#0B6279]' : 'text-white'}`}>Guest Bill</li>
+              </Link>
+            </>
+          ) : (       
+              <>
+                <Link href="/GuestInHouse" className={`flex ${pathname === "/GuestInHouse" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
+                <Image
+                  src={pathname === "/GuestInHouse" ? checkinIcon2 : checkinIcon1}
+                  className="w-8 h-8 me-5"
+                  width={30}
+                  height={30}
+                  alt="checkin icon" />
+                <li className={` text-[22px] font-[580px] ${pathname === "/GuestInHouse" ? ' text-[#0B6279]' : 'text-white'}`}>Guest In House</li>
+              </Link><Link href="/Room" className={`flex ${pathname === "/Room" || pathname === "/Room/Edit" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
+                  <Image
                     src={pathname === "/Room" || pathname === "/Room/Edit" ? roomIcon2 : roomIcon1}
                     className="w-8 h-8 me-5"
                     width={30}
                     height={30}
-                    alt="room icon"
-                  />
-            <li className={` whitespace-nowrap text-[22px] font-[580px] ${pathname === "/Room" || pathname === "/Room/Edit" ? ' text-[#0B6279]' : 'text-white'}`}>Room Status</li>
-          </Link>
-          <Link href="/History" className={`flex ${pathname === "/History" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
-              <Image
+                    alt="room icon" />
+                  <li className={` whitespace-nowrap text-[22px] font-[580px] ${pathname === "/Room" || pathname === "/Room/Edit" ? ' text-[#0B6279]' : 'text-white'}`}>Room Status</li>
+                </Link><Link href="/History" className={`flex ${pathname === "/History" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
+                  <Image
                     src={pathname === "/History" ? historyIcon2 : historyIcon1}
                     className="w-8 h-8 me-5"
                     width={30}
                     height={30}
-                    alt="room icon"
-                  />
-            <li className={` text-[22px] font-[580px] ${pathname === "/History" ? ' text-[#0B6279]' : 'text-white'}`}>History</li>
-          </Link>
-          <Link href="/Account" className={`flex ${pathname === "/Account" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
-              <Image
+                    alt="room icon" />
+                  <li className={` text-[22px] font-[580px] ${pathname === "/History" ? ' text-[#0B6279]' : 'text-white'}`}>History</li>
+                </Link><Link href="/Account" className={`flex ${pathname === "/Account" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
+                  <Image
                     src={pathname === "/Account" ? accountIcon2 : accountIcon1}
                     className="w-8 h-8 me-5"
                     width={30}
                     height={30}
-                    alt="room icon"
-                  />
-            <li className={` text-[22px] font-[580px] translate-y-1 ${pathname === "/Account" ? ' text-[#0B6279]' : 'text-white'}`}>Add Account</li>
-          </Link>
+                    alt="room icon" />
+                  <li className={` text-[22px] font-[580px] translate-y-1 ${pathname === "/Account" ? ' text-[#0B6279]' : 'text-white'}`}>Add Account</li>
+                </Link>
+              </>
+          )}
           <div className={`cursor-pointer flex ${pathname === "/logout" ? 'bg-white w-[270px] pt-[7px] rounded-[10px] ps-[8%] h-[45px] text-[#0B6279]' : 'ps-[8%] '}`}>
               <Image
                     src={pathname === "/logout" ? logoutIcon2 : logoutIcon1}

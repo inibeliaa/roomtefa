@@ -1,10 +1,14 @@
 "use client";
-import { Josefin_Sans as JosefinSans } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import { usePathname } from "next/navigation";
 import Sidebar from "./sidebar";
 
 
-const josefinSans = JosefinSans({ subsets: ["latin"] });
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
 
 const disableSidebar = "/";
 
@@ -17,7 +21,7 @@ export default function RootLayoutClient({
   const isSidebarDisabled =
     disableSidebar.includes(pathname) 
   return (
-    <div className={josefinSans.className}>
+    <div className="antialiased" style={{ fontFamily: `${josefinSans}` }}>
       {!isSidebarDisabled && <Sidebar/>}
       {children}
     </div>

@@ -21,7 +21,7 @@ function Login() {
   // const [isLoading, setIsLoading] = useState(false);
   async function Login() {
     // setIsLoading(true);
-    const url = `${process.env.NEXT_PUBLIC_URL}api/login` 
+    const url = `${process.env.NEXT_PUBLIC_URL}api/login`
     try {
       const res = await axios.post(
         url,
@@ -41,11 +41,34 @@ function Login() {
         showConfirmButton: false,
       });
       localStorage.setItem("token", res.data.token);
-      router.push("/Reservation")
+      localStorage.setItem("username", username);
+      const userDataHotel = res.data.user;
+      const token = res.data.token;
+
+      if (!userDataHotel || !token) {
+         console.error("User data atau token tidak ditemukan!", res.data);
+         return;
+      }
+
+      if (!userDataHotel.role) {
+         console.error("Role tidak ditemukan di userDataHotel!", userDataHotel);
+         return;
+      }
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("userDataHotel", JSON.stringify(userDataHotel));
+      
+      const userRole = userDataHotel.role
+      if (userRole === "resepsionis") {   
+        router.push("/Reservation")
+      } else if (userRole === "admin") {
+        router.push("/GuestInHouse")
+      } else {
+        return null;
+      }
       console.log(res);
       setUsername("");
-      setPassword("")
-      // setIsLoading(false);
+      setPassword("");
     } catch (error:any) {
       // setIsLoading(false);
       Swal.fire({

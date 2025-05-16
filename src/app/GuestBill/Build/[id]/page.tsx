@@ -29,7 +29,7 @@ function Page() {
   const router = useRouter();
 
   const handleCancel = () => {
-    router.replace("/Checkout")
+    router.back()
   }
   const [data, setData] = useState<ReservationData>()
   const { id } = useParams();
