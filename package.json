@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -12,7 +12,7 @@
     "axios": "^1.7.7",
     "dotenv": "^16.4.7",
     "loading": "^1.13.3",
-    "next": "^15.0.3",
+    "next": "^14.2.3",
     "nxt": "^0.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -719,20 +719,8 @@ const handleEditKonten = (id: number) => {
     const selectedItem = data.find((item) => item.id === id);
     if (selectedItem?.email) {
       const penerima = selectedItem.email;
-        const subject = `Reservation Confirmation For ${selectedItem.name}`
-        const body = `Dear ${selectedItem.name}! Thank you for your reservation at Milenial Hotel. We are pleased to confirm your booking. For the complete reservation details, please refer to the attached document. We look forward to welcoming you!
         
-        Best regards, ${selectedItem.bookedBy}
-        
-        
-        
-        Milenial Hotel
-        
-        
-        
-        SMK Negeri 1 Cisarua`;
-        
-        const mailtoLink = `mailto:${penerima}?subject=${subject}&body=${body}`;
+        const mailtoLink = `mailto:${penerima}?`;
     
         
       window.location.href = mailtoLink;
