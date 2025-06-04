@@ -191,6 +191,7 @@ function  PersonalRegis() {
               timer: 2000,
               backdrop: true,
           });
+        getIn();
       } catch (error) {
           console.error(error);
           Swal.fire({

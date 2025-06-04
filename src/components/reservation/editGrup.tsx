@@ -212,7 +212,7 @@ const EditGrup: React.FC<EditPop> = ({ isVisible, onClose, id }) => {
               deleteAccomodation.splice(i, 1);
               setAccomodation(deleteAccomodation);
       };
-      const [room, setroom] = useState<string>("101 Deluxe Twin ");
+      const [room, setroom] = useState<string>("");
       const [data, setData] = useState<any[]>([]);
       useEffect(() => {
           getRoom();
@@ -383,6 +383,7 @@ const EditGrup: React.FC<EditPop> = ({ isVisible, onClose, id }) => {
                    title: "Oops...",
                    text: error.response.data.message,
                    width: "25%",
+                   timer: 2000,
                    color: "#0E7793",
                    iconColor: "#e70008",
                    customClass: {

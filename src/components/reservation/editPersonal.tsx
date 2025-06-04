@@ -18,7 +18,7 @@ const EditPersonal: React.FC<EditPop> = ({ isVisible, onClose, id, getReservasi 
      const [nama, setnama] = useState<string>("");
       const [checkin, setCheckin] = useState<string>("");
       const [checkout, setCheckout] = useState<string>("");
-      const [room, setroom] = useState<string>("101 Deluxe Twin ");
+      const [room, setroom] = useState<string>("");
       const [email, setEmail] = useState<string>("");
       const [phone, setPhone] = useState<string>("");
       const [children, setChildren] = useState<string>("");
@@ -68,7 +68,7 @@ const EditPersonal: React.FC<EditPop> = ({ isVisible, onClose, id, getReservasi 
         getOne()
     }, [])
   
-    const [accomodation, setAccomodation] = useState<any[]>([
+  const [accomodation, setAccomodation] = useState<any[]>([
         {
           room: "101 Deluxe Twin",
           rate: 0,

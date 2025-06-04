@@ -383,6 +383,7 @@ const EditGrup: React.FC<EditPop> = ({ isVisible, onClose, id }) => {
                    title: "Oops...",
                    text: error.response.data.message,
                    width: "25%",
+                   timer: 2000,
                    backdrop: false,
                    color: "#0E7793",
                    iconColor: "#e70008",

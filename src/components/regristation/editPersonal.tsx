@@ -291,6 +291,7 @@ const url = `${process.env.NEXT_PUBLIC_URL}api/editRPersonal/${id}`;
           Swal.fire({
             icon: "error",
             title: "Oops...",
+            timer: 2000,
             text: error?.response?.data?.message,
             width: "25%",
             color: "#0E7793",

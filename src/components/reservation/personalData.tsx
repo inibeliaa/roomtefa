@@ -395,8 +395,10 @@ function PersonalData() {
                                     <td className='text-[18px] text-center px-4 py-2 whitespace-nowrap'>{item.name}</td>
                                     <td className='text-[18px] text-center px-4 py-2 '>{formatTanggal(item.checkin)}</td>
                                      <td className='text-[18px] text-center px-4 py-2'>{formatTanggal(item.checkout)}</td>
-                                     <td className='text-[18px] text-center px-4 py-2 whitespace-nowrap'>{item.roomgs.map((room: any) => room.room).join(', ')}
-                                     </td>
+                                     <td className="text-[18px] text-center px-4 py-2 whitespace-pre-line">
+  {item.roomgs.map((room: any) => room.room).join(',\n')}
+</td>
+
                                     <td className="px-4 flex py-2 items-center justify-center space-x-[5%]">
                                     <Link
                                         href={`/Registration/Build/${item.id}`}

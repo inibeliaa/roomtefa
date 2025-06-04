@@ -360,6 +360,7 @@ function page() {
                    icon: "error",
                    title: "Oops...",
                    backdrop: false,
+                   timer: 2000,
                    text: error.response.data.message,
                    width: "25%",
                    color: "#0E7793",

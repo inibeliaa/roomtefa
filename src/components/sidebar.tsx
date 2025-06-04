@@ -64,6 +64,7 @@ function Sidebar() {
           icon: "success",
           iconColor: "#0E7793cc",
           color: "#0E7793",
+          confirmButtonColor: "#0E7793",
           timer: 2000
         })
         router.replace('/')
@@ -172,7 +173,7 @@ function Sidebar() {
                     width={30}
                     height={30}
                     alt="room icon" />
-                  <li className={` text-[22px] font-[580px] translate-y-1 ${pathname === "/Account" ? ' text-[#0B6279]' : 'text-white'}`}>Add Account</li>
+                  <li className={` text-[22px] font-[580px] translate-y-1 ${pathname === "/Account" ? ' text-[#0B6279]' : 'text-white'}`}> Account</li>
                 </Link>
               </>
           )}

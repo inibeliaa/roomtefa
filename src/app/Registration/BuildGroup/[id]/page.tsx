@@ -471,6 +471,7 @@ async function getGroupData() {
                  title: "Oops...",
                  text: error.response.data.message,
                  width: "25%",
+                 timer: 2000,
                  color: "#0E7793",
                  iconColor: "#e70008",
                  customClass: {

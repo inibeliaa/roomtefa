@@ -22,6 +22,7 @@ type ReservationData = {
   checkout: string;
   preferency: string;
   remaining: number;
+  down: number;
   total: number;
   stay: number;
   rate: number;
@@ -248,7 +249,7 @@ function Page() {
         setAccomodation(res.data.roomgs || [])
             // setBooked(res.data.bookedBy || "");
             // setpreferency(res.data.preferency || "");
-            // setDown(res.data.down || 0);
+            setdeposit(res.data.down || 0);
             setRemaining(res.data.remaining || 0);
             settotal(res.data.total || 0);
             setRemarks(res.data.reservasiP || []);
@@ -337,9 +338,11 @@ const url = isValidId
             backdrop: false,
             title: "Oops...",
             text: error?.response?.data?.message,
+            timer: 2000,
             width: "25%",
-            color: "#0E7793",
-            iconColor: "#e70008",
+              color: "#0E7793",
+      
+        iconColor: "#e70008",
             customClass: {
               container:"alert"
             },
@@ -606,7 +609,7 @@ const url = isValidId
           {data && data.checkin && data.checkout && (  
             <>
               <h1 className='font-semibold text-[23px] translate-y-[10px]'>Reservation Detail</h1>
-                  <div className="bg-white grid grid-cols-2 space-y-[1%] p-[2%] flex-col w-full h-[200px] rounded-md">
+                  <div className="bg-white grid grid-cols-2 space-y-[1%] p-[2%] flex-col w-full h-[230px] rounded-md">
                       {/* <div className="flex space-x-[30%]">
                           <p className="text-[18px]">Reservation Code        :<span>1</span></p>
                           <p className="text-[18px]">Guest Name       :</p>
@@ -635,12 +638,19 @@ const url = isValidId
                   {/* <li>Room Quantity           :<span> 2</span></li> */}
                     <li>Checkin Date                   :<span> {formatTanggal(data.checkin)}</span></li>
                     <li>Checkout Date                  :<span> {formatTanggal(data.checkout)}</span></li>
+                    <li>Stay       :<span> {data.stay} Days</span></li>
                 </ul>
                 </div>
                 <div className="">
                   <ul className='flex-col space-y-[2%]'>
-                    <li>Stay       :<span> {data.stay} Days</span></li>
-                    <li>Rate   :<span> {formatHarga(data.rate)}</span></li>
+                    
+                    <li>Total   :<span> {formatHarga(data.total)}</span></li>
+                    <li>Deposit   :<span> {formatHarga(data.down)}</span></li>
+                    <li>Remaining   :<span> {formatHarga(data.remaining)}</span></li>
+                    <li>
+  Rate : <span>{formatHarga(data.roomgs.reduce((sum, room) => sum + room.rate, 0))}</span>
+</li>
+
                     <li>Special Request                :<span> {data.preferency}</span></li>
                     <li>Booked By         :<span> {data.bookedBy}</span></li>
                   </ul>
