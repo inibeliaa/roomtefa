@@ -11,7 +11,7 @@ type Bill = {
   id: number | undefined;
 };
 
-type getOut = {
+type getOutType = {
     id: number;
     total: number;
     remaining: number;
@@ -35,7 +35,7 @@ type Row = { detail: string; price: number; };
 const BillPersonal: React.FC<Bill> = ({ isVisible, onClose, id }) => {
   if (!isVisible) return null;
 
-  const [data, setData] = useState<getOut>();
+  const [data, setData] = useState<getOutType | null>(null);
   const [total, setTotal] = useState(0);
   const [down, setDown] = useState(0);
   const [roomCharge, setRoomCharge] = useState(0);
@@ -55,7 +55,7 @@ const BillPersonal: React.FC<Bill> = ({ isVisible, onClose, id }) => {
   const getOut = async () => {
     const url = `${process.env.NEXT_PUBLIC_URL}api/onePersonal/${id}`;
     try {
-        const res = await axios.get<getOut>(url, { withCredentials: true });
+        const res = await axios.get<getOutType>(url, { withCredentials: true });
         const totals = res.data.total;
         // const deposit = res.data.deposit;
     

@@ -274,6 +274,7 @@ const url = `${process.env.NEXT_PUBLIC_URL}api/editRPersonal/${id}`;
             iconColor: "#0E7793cc",
             color: "#0E7793",
             width: "25%",
+            backdrop: false,
             showConfirmButton: false,
             customClass: {
               container: "alert",
@@ -294,6 +295,7 @@ const url = `${process.env.NEXT_PUBLIC_URL}api/editRPersonal/${id}`;
             text: error?.response?.data?.message,
             width: "25%",
             color: "#0E7793",
+            backdrop: false,
             iconColor: "#e70008",
             customClass: {
               container:"alert"
@@ -478,7 +480,7 @@ const url = `${process.env.NEXT_PUBLIC_URL}api/editRPersonal/${id}`;
                     </button>
             </div>
           </div>
-          <div style={{ top: window.scrollY }} className="flex-col rounded-[20px]  flex space-y-[2%] w-[100%] min-h-screen">
+          <div style={{ top: window.scrollY }} className="flex-col rounded-[20px]  flex space-y-[2%] w-[100%] max-h-screen">
             <div className="flex  space-x-3">
               <div className='w-[70%] h-[50px]'>
                           <label htmlFor="Full" className="text-[20px]">Full Name</label>
@@ -605,14 +607,14 @@ const url = `${process.env.NEXT_PUBLIC_URL}api/editRPersonal/${id}`;
           </div>
           {data && data.checkin && data.checkout && (  
             <>
-              <h1 className='font-semibold text-[23px] translate-y-[10px]'>Reservation Detail</h1>
-                  <div className="bg-white grid grid-cols-2 space-y-[1%] p-[2%] flex-col w-full h-[200px] rounded-md">
+              <h1 className='font-semibold text-[23px]'>Reservation Detail</h1>
+                  <div className="bg-white grid grid-cols-2 space-y-[1%] p-[2%] flex-col w-full rounded-md">
             <div className="">
                 <ul className='flex-col space-y-[2%]'>
                   <li>Reservation Code        :<span> {data.id}</span></li>
                   <li>Reservation Date        :<span> {formatTanggal(data.createdAt)}</span></li>
                   <li>No. of Adult/Children  :<span> {data.adult} adult {data.children} children</span></li>
-                  {/* <li>Room Quantity           :<span> 2</span></li> */}
+                
                     <li>Checkin Date                   :<span> {formatTanggal(data.checkin)}</span></li>
                     <li>Checkout Date                  :<span> {formatTanggal(data.checkout)}</span></li>
                 </ul>

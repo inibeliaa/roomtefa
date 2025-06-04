@@ -55,6 +55,7 @@ const EditStatus: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
             iconColor: "#0E7793cc",
             color: "#0E7793",
             width: "25%",
+            backdrop: false,
             showConfirmButton: false,
             customClass: {
               container: "alert"
@@ -72,6 +73,7 @@ const EditStatus: React.FC<EditPop> = ({ id, isVisible, onClose }) => {
             timer: 2000,
             text: error.response.data.message,
             width: "25%",
+            backdrop: false,
             color: "#0E7793",
             iconColor: "#e70008",
             showConfirmButton: false

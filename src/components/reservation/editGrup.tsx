@@ -465,7 +465,7 @@ const EditGrup: React.FC<EditPop> = ({ isVisible, onClose, id }) => {
 <div className="w-[70%] bg-[#84D2D89C] ms-9 px-[3%] py-[3%] max-h-[90vh] overflow-y-auto border-2 border-[#5A72A0] rounded-md">
 
         {grupData && 
-      <div style={{ top: window.scrollY }} className="flex-col rounded-[20px]  flex space-y-[2%] w-[100%] min-h-screen">
+      <div style={{ top: window.scrollY }} className="flex-col rounded-[20px]  flex space-y-[2%] w-[100%] max-h-screen">
             <div className="relative">
               
             <button onClick={() => onClose(true)} className='w-[120px] cursor-pointer absolute right-[0%] top-[0] bg-white shadow-md h-[40px] rounded-lg font-semibold text-[#0E7793] border border-1 text-[20px] border-[#0B6279]'>

@@ -64,6 +64,7 @@ function Sidebar() {
           icon: "success",
           iconColor: "#0E7793cc",
           color: "#0E7793",
+          confirmButtonColor: "#0E7793",
           timer: 2000
         })
         router.replace('/')

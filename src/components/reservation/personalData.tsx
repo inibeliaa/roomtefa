@@ -231,9 +231,9 @@ function PersonalData() {
     
       
     useEffect(() => {
-        // const interval = setInterval(getReservasi, 100);
+        const interval = setInterval(getReservasi, 10000);
         getReservasi(); 
-        // return () => clearInterval(interval); 
+        return () => clearInterval(interval);
     }, []);
     async function getReservasi() {
         const url = `${process.env.NEXT_PUBLIC_URL}api/getReservasi`;
@@ -366,14 +366,14 @@ function PersonalData() {
           
         </div>
         }
-                    <div  className='bg-white'>
-                <div className="relative">
+                    <div  className='bg-white '>
+                <div className="relative ">
                 <Image
                 src={searchIcon}
                 alt="pass icon"
                 width={22}
                 height={22}
-                className="absolute top-1/2 left-[4%] cursor-pointer z-0"
+                className="absolute mt-2 top-1/2 left-[4%] cursor-pointer z-0"
               />
                 <input name="search" onChange={(e) => setSearch(e.target.value)} type="text" placeholder='Search' className='ms-[3%] ps-[4%] w-[25%] mt-[2%] px-[1%] shadow-md h-[40px] rounded-lg cursor-none font-semibold text-[#0E7793] border border-1 text-[20px] border-[#0B6279]'/>
                 </div>

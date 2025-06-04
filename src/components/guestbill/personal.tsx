@@ -261,7 +261,7 @@ function PersonalBill() {
                 alt="pass icon"
                 width={22}
                 height={22}
-                className="absolute top-1/2 left-[4%]"
+                 className="absolute mt-2 top-1/2 left-[4%] cursor-pointer z-0"
               />
                 <input name="search" onChange={(e) => setSearch(e.target.value)} type="text" placeholder='Search' className='ms-[3%] ps-[4%] w-[25%] mt-[2%] px-[1%] shadow-md h-[40px] rounded-lg font-semibold text-[#0E7793] border border-1 text-[20px] border-[#0B6279]'/>
                 </div>

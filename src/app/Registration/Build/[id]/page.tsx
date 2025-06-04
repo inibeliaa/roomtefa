@@ -639,8 +639,7 @@ const url = isValidId
                 </div>
                 <div className="">
                   <ul className='flex-col space-y-[2%]'>
-                    <li>Stay       :<span> {data.stay} Days</span></li>
-                    <li>Rate   :<span> {formatHarga(data.rate)}</span></li>
+                   
                     <li>Special Request                :<span> {data.preferency}</span></li>
                     <li>Booked By         :<span> {data.bookedBy}</span></li>
                   </ul>

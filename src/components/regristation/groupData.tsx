@@ -486,183 +486,7 @@ const handlePrint = (id: number) => {
     }
   }
 };
-          //  const [service, setService] = useState(0);
-  //             const handleGuest = (id: number) => {
-  //                 const selectedItem = data.find((item) => item.id === id);
-  //                 if (selectedItem) {
-  //                   const serfis = selectedItem.total * 10 / 100
-  //                   const tax = selectedItem.total * 11 / 100
-  //                   // setService(serfis);
-  //                   document.title = `${selectedItem.selectedItem.id}_Guest_Bill_${selectedItem.selectedItem.name}`;
-  //                   const printContent = `
-  //                     <html>
-  //                       <head>
-  //                         <title>${selectedItem.document.title}</title>
-  //                         <style>
-  //                           * {
-  //                             margin: 0;
-  //                             padding: 0;
-  //                             box-sizing: border-box;
-  //                           }
-                
-  //                           @media print {
-  //                             body {
-  //                               font-family: 'Times New Roman', Times, serif;
-  //                               font-size: 16px;
-  //                               margin: 0;
-  //                               padding: 20px;
-  //                               line-height: 1.2;
-  //                             }
-                
-  //                             .table {
-  //                               width: 100%;
-  //                               border-collapse: collapse;
-  //                               margin-top: 13%;
-  //                               margin-bottom: 13%;
-  //                             }
-                
-  //                             .table th, .table td {
-  //                               padding: 8px;
-  //                               border: 1px solid #ddd;
-  //                             }
-                
-  //                             .text-center {
-  //                               text-align: center;
-  //                             }
-                
-  //                             .text-right {
-  //                               text-align: right;
-  //                             }
-                
-  //                             .highlight-row {
-  //                               background-color: #f0f8ff;
-  //                             }
-                
-  //                             .header {
-  //                               margin-bottom: 20px;
-  //                             }
-                
-  //                             .logo {
-  //                               display: inline-block;
-  //                               vertical-align: middle;
-  //                             }
-                
-  //                             .table-container {
-  //                               margin-top: 20px;
-  //                             }
-                
-  //                             .footer {
-  //                               margin-top: 20px;
-  //                               text-align: center;
-  //                             }
-  //                               .justify-between {
-  //                                 justify-content: space-between;
-  //                             }
-  //                                 .flex {
-  //                                 display: flex;
-  //                             }
-  //                           }
-  //                         </style>
-  //                       </head>
-  //                       <body>
-  //                       <h2 class="text-center">GUEST BILL</h2>
-  //                         <div class="header justify-between flex">
-  //                         <div>
-  //                         <h2>Milenial Hotel</h2>
-  //                         <p>Phone: 08964656627</p>
-  //                         <p>Address: Jl. Kolonel Masturi 300</p>
-  //                         </div>
-  //                         <img class="logo" src="/assets/image/logo.png" alt="Logo" style="width: 80px; height: 80px;" />
-  //                         </div>
-                          
-                          
-  //                         <div class="details flex">
-  //                           <p style="width: 60%">Guest Name: ${selectedItem.selectedItem?.fullname}</p>
-  //                           <div>
-  //                           <p>Room:   ${selectedItem.selectedItem?.roomRs?.map((item:any) => item.room).join(',')}</p>
-  //                           <p>Arrival: ${selectedItem.formatTanggal(selectedItem?.arrivalGroups[0]?.datee)}</p>
-  //                           <p>Departure: ${formatTanggal(selectedItem?.DepartureGroups[0]?.datee)}</p>
-  //                           <p>Confirmation No: ${selectedItem?.id}</p>
-  //                           <p>Cashier: FO</p>
-  //                           <p>Invoice No: ${selectedItem?.id}</p>
-  //                           </div>
-  //                         </div>
-                
-  //                         <div class="table-container">
-  //                           <table class="table">
-  //                             <thead>
-  //                               <tr class="text-center">
-  //                                 <th>Date</th>
-  //                                 <th>Reference</th>
-  //                                 <th>Charges</th>
-  //                                 <th>Credit</th>
-  //                               </tr>
-  //                             </thead>
-  //                             <tbody>
-  //                               <tr class="highlight-row text-center">
-  //                                 <td>${formatTanggal(selectedItem?.DepartureGroups[0]?.datee)}</td>
-  //                                 <td>Deposit</td>
-  //                                 <td></td>
-  //                                 <td>${formatHarga(selectedItem?.deposit)}</td>
-  //                               </tr>
-  //                               <tr class="text-center">
-  //                                 <td></td>
-  //                                 <td>Government Tax</td>
-  //                                 <td>${formatHarga(tax)}</td>
-  //                                 <td></td>
-  //                               </tr>
-                                
-  //                               <tr class="text-center">
-  //                                 <td></td>
-  //                                 <td>Service Charge (10%)</td>
-  //                                 <td>${formatHarga(serfis)}</td>
-  //                                 <td></td>
-  //                               </tr>
-  //                               <tr class="text-center">
-  //                                 <td colspan="3" style=" font-weight: bold;">Total</td>
-  //                                 <td style="" class="text-center">${formatHarga(selectedItem?.total)}</td>
-  //                               </tr>
-                                
-  //                             </tbody>
-  //                           </table>
-  //                         </div>
-                
-  //                         <div class="footer" style="width:85%;margin-inline-start: 7%">
-  //                           <p>
-  //                             This Statement is the only receipt. I agree that I am personally liable for the above-mentioned payment 
-  //                             and if the person, company, or association indicated by me as being responsible for the payment fails 
-  //                             to pay, I understand that my liability shall be joint with such person, company, or association.
-  //                           </p>
-  //                           <div style="margin-top: 5%; text-align: left; margin-left: 2%">
-  //                             <label for="Signature">Guest Signature:</label>
-  //                             <div style="width: 100%; border-bottom: 1px solid #000; height: 60px;"></div>
-  //                           </div>
-  //                         </div>
-  //                       </body>
-  //                     </html>
-  //                   `;
-                
-  //                   const iframe = document.createElement("iframe");
-  //                   iframe.style.position = "absolute";
-  //                   iframe.style.width = "0";
-  //                   iframe.style.height = "0";
-  //                   iframe.style.border = "none";
-  //                   document.body.appendChild(iframe);
-                
-  //                   const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
-  //                   if (iframeDoc) {
-  //                     iframeDoc.open();
-  //                     iframeDoc.write(printContent);
-  //                     iframeDoc.close();
-                
-  //                     iframe.onload = () => {
-  //                       iframe.contentWindow?.focus();
-  //                       iframe.contentWindow?.print();
-  //                       document.body.removeChild(iframe);
-  //                     };
-  //                   }
-  //                 }
-  // };
+ 
   async function co(id: number) {
     const token = localStorage.getItem("token"); 
     if (!token) {
@@ -688,15 +512,6 @@ const handlePrint = (id: number) => {
             }
         );
         console.log(res.data);
-        Swal.fire({
-            icon: "success",
-            title: "Success Checkout",
-            iconColor: "#0E7793",
-            width: "35%",
-            confirmButtonColor: "#0E7793",
-            timer: 2000,
-            backdrop: true,
-        });
     } catch (error) {
         console.error(error);
         Swal.fire({
@@ -707,6 +522,39 @@ const handlePrint = (id: number) => {
         });
     }
 }
+
+ const handleCo = (id:number) => {
+      Swal.fire({
+        title: "Are you sure you want to checkout?",
+        showCancelButton: true,
+        icon: "question",
+        confirmButtonText: "Yes",
+        iconColor: "#0E7793cc",
+        color: "#0E7793",
+        width: "35%",
+        confirmButtonColor: "#0E7793"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          co(id);
+          Swal.fire({
+            title: "Checkout Success!",
+            icon: "success",
+            iconColor: "#0E7793cc",
+            color: "#0E7793",
+            confirmButtonColor: "#0E7793",
+            timer: 2000
+          })
+        } else if (result.isDenied) {
+          Swal.fire({
+            title: "Please Try Again!",
+            icon: "warning",
+            color: "#0E7793",
+            iconColor: "#e70008",
+            timer: 2000
+          })
+        }
+      });
+    }
 const [showKonten, setShowKonten] = useState(false)
 const [selectedEdit, setselectedEdit] = useState<number>();  
 const handleEditKonten = (id: number) => {
@@ -769,7 +617,7 @@ onClose={() => setShowKonten(false)}
                 alt="pass icon"
                 width={22}
                 height={22}
-                className="absolute top-1/2 left-[4%]"
+                 className="absolute mt-2 top-1/2 left-[4%] cursor-pointer z-0"
               />
                 <input name="search" onChange={(e) => setSearch(e.target.value)} type="text" placeholder='Search' className='ms-[3%] ps-[4%] w-[25%] mt-[2%] px-[1%] shadow-md h-[40px] rounded-lg font-semibold text-[#0E7793] border border-1 text-[20px] border-[#0B6279]'/>
                 </div>
@@ -802,7 +650,7 @@ onClose={() => setShowKonten(false)}
                                         <Image className="cursor-pointer flex justify-self-center" onClick={()=>handleGuest(item.id)} src={receipt} width={25} height={25} alt="receipt" />
                                      </td> */}
                                      <td className='text-[18px] text-center px-4 py-2 whitespace-nowrap'>
-                                         <button onClick={()=>co(item.id)} className='bg-[#0E7793] px-2 py-1 rounded-md text-white'>Checkout</button>
+                                         <button onClick={()=>handleCo(item.id)} className='bg-[#0E7793] px-2 py-1 rounded-md text-white'>Checkout</button>
                                      </td>
                                 </tr>
                             ))

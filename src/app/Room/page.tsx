@@ -39,7 +39,7 @@ function Page() {
 
     return (
         <div className="overflow-x-hidden w-full min-h-screen">
-            <div className='bg-white ml-[25%] pb-[10%]'>
+            <div className='bg-white ml-[17%] pb-[10%]'>
                 <div className="text-[23px] font-semibold bg-gradient-to-b from-[#4CCBD3] to-[#0E7793] z-0 ms-[2%] mt-6 inline-block text-transparent bg-clip-text">
                     Room Data
                 </div>

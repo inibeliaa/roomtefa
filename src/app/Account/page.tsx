@@ -31,6 +31,7 @@ function Page() {
         timer: 2000,
         iconColor: "#0E7793cc",
         color: "#0E7793",
+          backdrop: false,
         width: "25%",
         showConfirmButton: false,
         customClass: {
